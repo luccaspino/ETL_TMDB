@@ -15,7 +15,7 @@ Incluindo 4 páginas: Visão Geral, DireAtor, Explorar de filmes assistidos, Exp
 <img width="1087" height="614" alt="image" src="https://github.com/user-attachments/assets/3b410e2b-c156-48f0-a4bf-cacb48b549a9" />
 <img width="1113" height="580" alt="image" src="https://github.com/user-attachments/assets/231675b2-54cc-4703-900d-967b9a001558" />
 
-Modelagem estrela:
+Modelagem:
 
 <img width="1107" height="668" alt="image" src="https://github.com/user-attachments/assets/e8b9808e-fa0a-4732-917f-9bef13fcb6b6" />
 
@@ -26,7 +26,7 @@ O **ETLBOXD** é uma pipeline ETL pessoal que transforma dados brutos exportados
 A pipeline foi desenvolvida em **Python com Pandas** e organizada em três etapas: 
 1. **Extract**: Extração e leitura dos CSVs brutos do Letterboxd.
 2. **Transform & TMDB API**: Enriquecimento dos dados buscando gênero, duração, país de produção, idioma, sinopse, diretor e top 3 atores.
-3. **Load**: Normalização em modelo estrela e carga em arquivos processados prontos para consumo. 
+3. **Load**: Normalização em modelo snowflake e carga em arquivos processados prontos para consumo. 
 
 O projeto conta com **cache local** para evitar chamadas desnecessárias à API e está **Dockerizado** para facilitar a execução em qualquer ambiente.
 
@@ -44,8 +44,8 @@ letterboxd-etl/
 │   ├── extract.py        ← Leitura e validação dos CSVs
 │   ├── transform.py      ← Limpeza, tipagem e merge
 │   ├── tmdb.py           ← Enriquecimento via API do TMDB
-│   ├── normalize.py      ← Normalização em modelo estrela
-│   └── load.py           ← Escrita dos CSVs processados / DuckDB
+│   ├── normalize.py      ← Normalização do modelo 
+│   └── load.py           ← Escrita dos CSVs processados 
 ├── main.py               ← Entrypoint da pipeline
 ├── Dockerfile
 ├── docker-compose.yml
@@ -92,7 +92,7 @@ Para facilitar, o projeto já inclui um template pronto!
 
 Após rodar a pipeline, vá até a pasta src/BI/ e abra o arquivo etlboxd.pbit no Power BI Desktop.
 
-Os dados serão carregados seguindo o Modelo Estrela gerado na pasta data/processed/.
+Os dados serão carregados seguindo o modelo gerado na pasta data/processed/.
 
 O modelo conecta a tabela fato central (master.csv) com as dimensões de genres, countries, directors e actors através de tabelas ponte, gerando filtros e estatísticas personalizadas em tempo real!
 
