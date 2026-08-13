@@ -26,7 +26,7 @@ O **ETLBOXD** é uma pipeline ETL pessoal que transforma dados brutos exportados
 A pipeline foi desenvolvida em **Python com Pandas** e organizada em três etapas: 
 1. **Extract**: Extração e leitura dos CSVs brutos do Letterboxd.
 2. **Transform & TMDB API**: Enriquecimento dos dados buscando gênero, duração, país de produção, idioma, sinopse, diretor e top 3 atores.
-3. **Load**: Normalização em modelo snowflake e carga em arquivos processados prontos para consumo. 
+3. **Load**: Normalização de modelo  e carga em arquivos processados prontos para consumo. 
 
 O projeto conta com **cache local** para evitar chamadas desnecessárias à API e está **Dockerizado** para facilitar a execução em qualquer ambiente.
 
